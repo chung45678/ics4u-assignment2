@@ -1,24 +1,15 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+(document.getElementById("solveCubic")as HTMLButtonElement).addEventListener("click", () => {
+  const a = Number(document.getElementById("a-value"))
+  const b = Number(document.getElementById("b-value"))
+  const c = Number(document.getElementById("c-value"))
+  const d = Number(document.getElementById("d-value"))
+  let p = 3 ** a ** c - b^2 / 3 ** a^2
+  let q = 27 ** a^2 ** d
+  
+  const discriminant = (q / 2)^2 + (p/3)^3
+  console.log(discriminant)
+  
+})
