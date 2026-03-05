@@ -1,6 +1,8 @@
 import './style.css'
 
 
+
+
 (document.getElementById("solveCubic")as HTMLButtonElement).addEventListener("click", () => {
   const a = Number(document.getElementById("a-value").value)
   const b = Number(document.getElementById("b-value").value)
@@ -15,7 +17,19 @@ import './style.css'
   
   const discriminant = (q / 2)**2 + (p/3)**3
   console.log(discriminant)
+  console.log("cardano" + cardanosMethod(a,b,p,q))
 
-
-  
+  if (discriminant < 0)[
+    
+  ]
 })
+
+function cardanosMethod(a: number, b: number, p : number, q: number){
+  return (
+    Math.cbrt (
+      -q / 2 + Math.sqrt((q/2)**2) + ((p/3)**3) + Math.cbrt(-q/2 - ((q/2)**2) + (p/3)**3) - (b/3*a)
+    )
+  )
+}
+
+function
