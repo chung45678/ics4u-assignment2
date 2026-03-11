@@ -6,6 +6,7 @@ import "./style.css"
   const c = Number((document.getElementById("c-value") as HTMLInputElement).value);
   const d = Number((document.getElementById("d-value") as HTMLInputElement).value);
   
+  //display equation 
   const equationParts: string[] = [];
 
   if (a !== 0) equationParts.push(`${a === 1 ? "" : a}x³`);
@@ -29,6 +30,7 @@ import "./style.css"
 (document.getElementById("equation") as HTMLInputElement).textContent =
   equationParts.join(" ") + " = 0";
 
+  //calculate roots
   let p = (3 * a * c - b**2) / (3 * a**2);
   let q = ((27 * a * a * d) - (9*a*b*c) + (2*b**3)) / (27*a**3);
   const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3);
@@ -81,6 +83,7 @@ drawGraph(a, b, c, d, realRoots);
 
 })
 
+//calc methods
 function trigonometricMethod(a: number, b: number, p: number, q: number) {
   const rval: Array<number>= new Array();
   const theta: number =
@@ -107,6 +110,7 @@ function cardanosMethod(a: number, b: number, p : number, q: number) {
 }
 
 function drawGraph(a: number, b: number, c: number, d: number, roots: number[]): void {
+  //coords
   const minX: number = -10;
   const maxX: number = 10;
   const minY: number = -10;
@@ -114,7 +118,8 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
 
   const canvas = document.getElementById("graph") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
-
+  
+  //check if context is null to prevent crash
   if (!ctx) return;
 
   const scaleX: number = canvas.width / (maxX - minX);
@@ -122,7 +127,7 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Draw axes
+  //axEs
   ctx.strokeStyle = "black";
   ctx.beginPath();
   ctx.moveTo(0, canvas.height / 2);
@@ -131,9 +136,10 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
   ctx.lineTo(canvas.width / 2, canvas.height);
   ctx.stroke();
 
-  // Draw vertical grid lines
+  //grid
   ctx.strokeStyle = "lightGray";
   for (let x = minX; x <= maxX; x++) {
+
     const pixelX = (x - minX) * scaleX;
     ctx.beginPath();
     ctx.moveTo(pixelX, 0);
@@ -141,7 +147,6 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
     ctx.stroke();
   }
 
-  // Draw horizontal grid lines
   for (let y = minY; y <= maxY; y++) {
     const pixelY = canvas.height - (y - minY) * scaleY;
     ctx.beginPath();
@@ -150,20 +155,19 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
     ctx.stroke();
   }
 
-  // Draw cubic function
   ctx.strokeStyle = "red";
   ctx.beginPath();
 
-  let isFirstPoint = true;
+  let firstPoint = true;
 
   for (let i = 0; i < canvas.width; i++) {
     const x = minX + i / scaleX;
     const y = a * x ** 3 + b * x ** 2 + c * x + d;
     const canvasY = canvas.height / 2 - y * scaleY;
 
-    if (isFirstPoint) {
+    if (firstPoint) {
       ctx.moveTo(i, canvasY);
-      isFirstPoint = false;
+      firstPoint = false;
     } else {
       ctx.lineTo(i, canvasY);
     }
@@ -171,7 +175,6 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
 
   ctx.stroke();
 
-  // Draw roots
   ctx.fillStyle = "blue";
   console.log(roots);
 
