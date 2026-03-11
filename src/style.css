@@ -1,9 +1,164 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  color: orange;
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ── Main card ── */
+#calculator {
+  background: #ffffff;
+  border: 1px solid #d6d9e0;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 900px;
+  height: fit-content;
+  display: flex;          /* ADD */
+  flex-direction: column; /* ADD */
+}
+/* ── Input section ── */
+#cubic-solver {
+  padding: 32px 36px 28px;
+  border-bottom: 1px solid #e2e5ec;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 18px;
+}
+
+#cubic-solver h2 {
+  flex: 0 0 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f57c00;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+#cubic-solver label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.83rem;
+  color: #555;
+  font-weight: 500;
+}
+
+#cubic-solver input[type="number"] {
+  width: 128px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #c8cbd4;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: inherit;
+  text-align: center;
+  color: #222;
+  background: #fafbfc;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#cubic-solver input[type="number"]::-webkit-inner-spin-button,
+#cubic-solver input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+#cubic-solver input[type="number"]:focus {
+  border-color: #f57c00;
+  background: #fff;
+}
+
+#solveCubic {
+  height: 40px;
+  padding: 0 24px;
+  background: #f57c00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: background 0.15s, transform 0.1s;
+  align-self: flex-end;
+}
+
+#solveCubic:hover  { background: #e56c00; }
+#solveCubic:active { transform: scale(0.97); }
+
+/* ── Results table ── */
+#result {
+  padding: 28px 36px 24px;
+  border-bottom: 1px solid #e2e5ec;
+}
+
+#result table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.91rem;
+}
+
+#result table th,
+#result table td {
+  padding: 8px 16px;
+  border: 1px solid #dde0e8;
+  text-align: center;
+}
+
+/* Orange header row */
+#result table tr:first-child th {
+  background: #f57c00;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+/* Data row */
+#result table tr:last-child td,
+#result table tr:last-child th {
+  background: #fff;
+  color: #2b2b2b;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+#result table tr:last-child td:hover,
+#result table tr:last-child th:hover {
+  background: #fff7f0;
+}
+
+/* ── Main card ── */
+
+
+/* ── Graph / canvas ── */
+.graph-container {
+  padding: 24px 36px 32px;
+  display: flex;
+  justify-content: center;
+  width: 100%;            /* ADD */
+  border-top: 1px solid #e2e5ec; /* optional: adds a divider line above the graph */
+}
+
+#graph {
+  border: 1px solid #dde0e8;
+  border-radius: 5px;
+  background: #fff;
+  max-width: 100%;
+}
