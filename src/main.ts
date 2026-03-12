@@ -35,7 +35,7 @@ import "./style.css"
   //calculate roots
   let p = (3 * a * c - b ** 2) / (3 * a ** 2);
   let q = ((27 * a * a * d) - (9 * a * b * c) + (2 * b ** 3)) / (27 * a ** 3);
-  const discriminant: number = (q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3);
+  const discriminant: number = Number(((q / 2) * (q / 2) + (p / 3) * (p / 3) * (p / 3)).toFixed(10));
 
   console.log(discriminant)
   console.log(p)
