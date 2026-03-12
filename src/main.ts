@@ -144,7 +144,7 @@ function drawGraph(a: number, b: number, c: number, d: number, roots: number[]):
 
     const pixelX = (x - minX) * scaleX;
     ctx.beginPath();
-    ctx.lineWidth = 1queueMicrotask
+    ctx.lineWidth = 1 
     ctx.moveTo(pixelX, 0);
     ctx.lineTo(pixelX, canvas.height);
     ctx.stroke();
